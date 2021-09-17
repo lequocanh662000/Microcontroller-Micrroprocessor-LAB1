@@ -15,19 +15,21 @@ int main(void)
 
   while (1)
   {
-	 // led1 on; led2, led3 off
-	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_SET);
+	  // led1 on; led2, led3 off
 	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_RESET);
 	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_RESET);
 	  	  HAL_Delay(5000);
-	 // led3 on led1, led2 off
+	  	  //led3 on led1, led2 off
 	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_RESET);
 	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_SET);
 	  	  HAL_Delay(3000);
-	 // led 2 on; led1, led3 off
+	  	  //led 2 on; led1, led3 off
 	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_SET);
 	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_RESET);
 	  	  HAL_Delay(2000);
+	  	  // turn on led1
+	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_SET);
+
   }
   /* USER CODE END 3 */
 }
