@@ -2,9 +2,14 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "led7_display.h"
+#include "stdint.h"
 
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+
+#define ADC_BASE_ADDR 			0x40012000UL
+#define ADC_CR1_REG_OFFSET		0x04UL
+#define ADC_CR1_REG_ADDR 		(ADC_BASE_ADDR+ADC_CR1_REG_OFFSET)
 
 
 int main(void)
@@ -18,45 +23,29 @@ int main(void)
 
   MX_GPIO_Init();
 
-  int counter1=5;
-  int counter2=3;
-  int counter3=2;
-  while (1)
-  {
-	  // led red on; yellow, green off
-	  if(counter1 > 0){
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_SET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_RESET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_RESET);
+  uint32_t *pAdcCr1Reg = (uint32_t*) ADC_CR1_REG_ADDR;
 
-	  	  	  display7SEG(counter1);
-	  	  	  counter1--;
-	  }
-	  	 // led green on red, yellow off
-	  else if(counter2 > 0){
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_RESET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_RESET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_SET);
-	  	  	  display7SEG(counter2);
-	  	  	  counter2--;
-	  }
+  *pAdcCr1Reg != (1 << 8);
 
-	  	 // led yellow on; red, green off
-	  else if(counter3 > 0){
-		  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_RESET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_SET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_RESET);
-	  	  	  display7SEG(counter3);
-	  	  	  counter3--;
-	  }
-	  else{
-		  counter1 = 5;
-		  counter2 = 3;
-		  counter3 = 2;
-	  }
-	  HAL_Delay(1000);
-  }
-  /* USER CODE END 3 */
+//  int number=0;
+//  while (1)
+//  {
+//
+//	  // led1 on; led2, led3 off
+//	  	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_SET);
+//	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_RESET);
+//	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_RESET);
+//	  	  	  HAL_Delay(5000);
+//	  	 // led3 on led1, led2 off
+//	  	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_RESET);
+//	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_SET);
+//	  	  	  HAL_Delay(3000);
+//	  	 // led 2 on; led1, led3 off
+//	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_SET);
+//	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_RESET);
+//	  	  	  HAL_Delay(2000);
+//  }
+//  /* USER CODE END 3 */
 }
 
 /**

@@ -28,14 +28,12 @@ int main(void)
 	  	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_SET);
 	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_RESET);
 	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_RESET);
-
 	  	  	  display7SEG(counter1);
 	  	  	  counter1--;
 	  }
 	  	 // led green on red, yellow off
 	  else if(counter2 > 0){
 	  	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_RESET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_RESET);
 	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_SET);
 	  	  	  display7SEG(counter2);
 	  	  	  counter2--;
@@ -43,7 +41,6 @@ int main(void)
 
 	  	 // led yellow on; red, green off
 	  else if(counter3 > 0){
-		  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_RESET);
 	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_SET);
 	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_RESET);
 	  	  	  display7SEG(counter3);
@@ -51,8 +48,8 @@ int main(void)
 	  }
 	  else{
 		  counter1 = 5;
-		  counter2 = 3;
-		  counter3 = 2;
+		  counter2 = 2;
+		  counter3 = 3;
 	  }
 	  HAL_Delay(1000);
   }

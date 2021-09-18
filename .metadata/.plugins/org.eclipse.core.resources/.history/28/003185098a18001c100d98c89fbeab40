@@ -2,10 +2,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "led7_display.h"
-
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-
 
 int main(void)
 {
@@ -17,44 +15,14 @@ int main(void)
 
 
   MX_GPIO_Init();
-
-  int counter1=5;
-  int counter2=3;
-  int counter3=2;
+  int number;
   while (1)
   {
-	  // led red on; yellow, green off
-	  if(counter1 > 0){
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_SET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_RESET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_RESET);
-
-	  	  	  display7SEG(counter1);
-	  	  	  counter1--;
-	  }
-	  	 // led green on red, yellow off
-	  else if(counter2 > 0){
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_RESET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_RESET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_SET);
-	  	  	  display7SEG(counter2);
-	  	  	  counter2--;
-	  }
-
-	  	 // led yellow on; red, green off
-	  else if(counter3 > 0){
-		  	  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, GPIO_PIN_RESET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, GPIO_PIN_SET);
-	  	  	  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, GPIO_PIN_RESET);
-	  	  	  display7SEG(counter3);
-	  	  	  counter3--;
-	  }
-	  else{
-		  counter1 = 5;
-		  counter2 = 3;
-		  counter3 = 2;
-	  }
-	  HAL_Delay(1000);
+    /* USER CODE END WHILE */
+	  number = (number+1) % 10;
+	  display7SEG(number);
+	  HAL_Delay(500);
+    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
