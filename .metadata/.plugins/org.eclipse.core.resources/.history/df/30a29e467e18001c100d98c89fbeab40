@@ -1,0 +1,69 @@
+#include "main.h"
+#include "led7_display.h"
+
+#define NUMBER_OF_SEVEN_SEGMENT_LED 1
+
+//common Anode 0:off  1:one
+static uint8_t sevenSegmentLEDConversion[10] = {0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f};
+
+//common Cathode 0:one  1:off
+//uint8_t sevenSegmentLEDConversion[10] = {};
+
+static uint8_t sevenSegmentLEDBuffer[NUMBER_OF_SEVEN_SEGMENT_LED]; // buffer to display one or more 7segLED
+
+void update_seven_segment_led_buffer(uint8_t number){
+	sevenSegmentLEDBuffer[0] = sevenSegmentLEDConversion[number];
+}
+
+void seven_segment_led_driver(void){
+	uint8_t temp = sevenSegmentLEDConversion[sevenSegmentLEDBuffer[0]];
+	if(temp & 0x01){
+		HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, SET);
+	}else{
+		HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, RESET);
+	}
+
+	if(temp & 0x02){
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, SET);
+		}else{
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, RESET);
+		}
+
+	if(temp & 0x04){
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, SET);
+		}else{
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, RESET);
+		}
+
+	if(temp & 0x08){
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, SET);
+		}else{
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, RESET);
+		}
+
+	if(temp & 0x10){
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, SET);
+		}else{
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, RESET);
+		}
+
+	if(temp & 0x20){
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, SET);
+		}else{
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, RESET);
+		}
+
+	if(temp & 0x40){
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, SET);
+		}else{
+			HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, RESET);
+		}
+
+	if(temp & 0x80){
+				HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, SET);
+			}else{
+				HAL_GPIO_WritePin(SEVEN_SEGMENT_1_A_PORT, SEVEN_SEGMENT_1_A, RESET);
+			}
+}
+
+

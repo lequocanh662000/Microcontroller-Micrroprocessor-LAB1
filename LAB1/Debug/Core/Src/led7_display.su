@@ -1,0 +1,3 @@
+led7_display.c:14:6:update_seven_segment_led_buffer	16	static
+led7_display.c:18:6:seven_segment_led_driver	16	static
+led7_display.c:70:6:display7SEG	16	static
