@@ -1,0 +1,49 @@
+/*
+ * matrix5x7_display.c
+ *
+ *  Created on: Sep 19, 2021
+ *      Author: Dell
+ */
+
+#include "maxtrix5x7_display.h"
+#include "main.h"
+
+void display_matrix5x7(int row, int col){
+	HAL_GPIO_WritePin(GPIOA, ROW1_Pin|ROW2_Pin|ROW3_Pin|ROW4_Pin
+	                            |ROW5_Pin, GPIO_PIN_RESET);
+
+	HAL_GPIO_WritePin(GPIOB, COL1_Pin|COL2_Pin|COL3_Pin|COL4_Pin
+	                            |COL5_Pin|COL6_Pin|COL7_Pin|GPIO_PIN_7, GPIO_PIN_SET);
+
+	if(row == 1){
+		#define ROW_Pin 	ROW1_Pin
+	}else if(row == 2){
+		#define ROW_Pin 	ROW2_Pin
+	}else if(row == 3){
+		#define ROW_Pin 	ROW3_Pin
+	}else if(row == 4){
+		#define ROW_Pin 	ROW4_Pin
+	}else {
+		#define ROW_Pin 	ROW5_Pin
+	}
+
+	if(col == 1){
+		#define COL_Pin 	COL1_Pin
+	}else if(col == 2){
+		#define COL_Pin 	COL2_Pin
+	}else if(col == 3){
+		#define COL_Pin 	COL3_Pin
+	}else if(col == 4){
+		#define COL_Pin 	COL4_Pin
+	}else if(col == 5){
+		#define COL_Pin 	COl5_Pin
+	}else if(col == 6){
+		#define COL_Pin 	COl6_Pin
+	}else {
+		#define COL_Pin 	COl7_Pin
+	}
+
+	HAL_GPIO_WritePin(GPIOA, ROW_Pin, SET);
+	HAL_GPIO_WritePin(GPIOB, COL_Pin, RESET);
+
+}

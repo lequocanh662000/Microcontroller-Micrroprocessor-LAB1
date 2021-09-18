@@ -52,30 +52,13 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
-// define LED 7 SEGMENTs
-#define SEVEN_SEGMENT_1_A 			GPIO_PIN_0
-#define SEVEN_SEGMENT_1_A_PORT 		GPIOB
-#define SEVEN_SEGMENT_1_B 			GPIO_PIN_1
-#define SEVEN_SEGMENT_1_B_PORT 		GPIOB
-#define SEVEN_SEGMENT_1_C 			GPIO_PIN_2
-#define SEVEN_SEGMENT_1_C_PORT 		GPIOB
-#define SEVEN_SEGMENT_1_D 			GPIO_PIN_3
-#define SEVEN_SEGMENT_1_D_PORT 		GPIOB
-#define SEVEN_SEGMENT_1_E 			GPIO_PIN_4
-#define SEVEN_SEGMENT_1_E_PORT 		GPIOB
-#define SEVEN_SEGMENT_1_F 			GPIO_PIN_5
-#define SEVEN_SEGMENT_1_F_PORT 		GPIOB
-#define SEVEN_SEGMENT_1_G 			GPIO_PIN_6
-#define SEVEN_SEGMENT_1_G_PORT 		GPIOB
-#define SEVEN_SEGMENT_1_H 			GPIO_PIN_7
-#define SEVEN_SEGMENT_1_H_PORT 		GPIOB
-// TRAFFIC LEDS
-#define LED_RED_Pin GPIO_PIN_5
-#define LED_RED_GPIO_Port GPIOA
-#define LED_YELLOW_Pin GPIO_PIN_6
-#define LED_YELLOW_GPIO_Port GPIOA
-#define LED_GREEN_Pin GPIO_PIN_7
-#define LED_GREEN_GPIO_Port GPIOA
+
+/* USER CODE BEGIN EFP */
+
+/* USER CODE END EFP */
+
+/* Private defines -----------------------------------------------------------*/
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
