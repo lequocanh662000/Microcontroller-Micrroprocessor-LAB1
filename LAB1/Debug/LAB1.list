@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  0002001c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000302e  00000000  00000000  00020045  2**0
+ 12 .debug_info   00002f80  00000000  00000000  00020045  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000f10  00000000  00000000  00023073  2**0
+ 13 .debug_abbrev 00000e95  00000000  00000000  00022fc5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000003f8  00000000  00000000  00023f88  2**3
+ 14 .debug_aranges 000003d8  00000000  00000000  00023e60  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000370  00000000  00000000  00024380  2**3
+ 15 .debug_ranges 00000350  00000000  00000000  00024238  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00000d93  00000000  00000000  000246f0  2**0
+ 16 .debug_macro  00000d93  00000000  00000000  00024588  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000470c  00000000  00000000  00025483  2**0
+ 17 .debug_line   000045cb  00000000  00000000  0002531b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000798e8  00000000  00000000  00029b8f  2**0
+ 18 .debug_str    00079893  00000000  00000000  000298e6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000a3477  2**0
+ 19 .comment      00000053  00000000  00000000  000a3179  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000dd8  00000000  00000000  000a34cc  2**2
+ 20 .debug_frame  00000d48  00000000  00000000  000a31cc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -392,7 +392,7 @@ void display_matrix5x7_all(){
  80002ee:	781a      	ldrb	r2, [r3, #0]
  80002f0:	4b0b      	ldr	r3, [pc, #44]	; (8000320 <display_matrix5x7_all+0x50>)
  80002f2:	60da      	str	r2, [r3, #12]
-		HAL_Delay(1000);
+		HAL_Delay(1000); // if it is fast enough (delay 1ms), fps > 24, people can see it like as the picture showed in requirement
  80002f4:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  80002f8:	f000 f8b4 	bl	8000464 <HAL_Delay>
 	for(int i=0; i<5; i++){
