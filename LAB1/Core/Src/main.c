@@ -24,10 +24,21 @@ int main(void)
 
 	  HAL_GPIO_WritePin(GPIOA, COL1_Pin|COL2_Pin|COL3_Pin|COL4_Pin
 	    	        	                            |COL5_Pin, RESET);
-	  HAL_Delay(1000);
+	  HAL_Delay(500);
     /* USER CODE END WHILE */
+
+	  setNumberOnClock(0);
+
+	  setNumberOnClock(3);
+
+	  setNumberOnClock(7);
+
+	  setNumberOnClock(9);
+
+	  setNumberOnClock(11);
+
 	  display_matrix5x7_all();
-	  HAL_Delay(1000);
+	  HAL_Delay(500);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

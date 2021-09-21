@@ -10,13 +10,14 @@
 
 #define NUMBER_OF_MATRIX5x7 	1
 
-//static int 	matrix5x7_buffer[NUMBER_OF_MATRIX5x7]; // number of matrix led buffer : quet column
-//static uint8_t rowMatrix5x7Conversion[] = {};
+static int 	matrix5x7_buffer[NUMBER_OF_MATRIX5x7]; // number of matrix led buffer : quet column
+static uint8_t rowMatrix5x7Conversion[] = {0xfd, 0xfd, 0xfb, 0xf7, 0xef, 0xdf, 0xdf, 0xdf, 0xef, 0xf7, 0xfb, 0xfd};
 
 static uint8_t column_buffer[] = {0x01, 0x2, 0x04, 0x08, 0x10};
-static uint8_t row_buffer[]    = {0xe3, 0xdd, 0xdd, 0xdd, 0xe3};
+static uint8_t row_buffer[]    = {0xff, 0xff, 0xff, 0xff, 0xff};
 
-void display_matrix5x7_all(){
+
+void display_matrix5x7_all(){   // for ex6
 	for(int i=0; i<5; i++){
 		GPIOB->ODR = row_buffer[i];
 		GPIOA->ODR = column_buffer[i];
@@ -24,7 +25,7 @@ void display_matrix5x7_all(){
 	}
 }
 
-void clearAllClock(void){
+void clearAllClock(void){  // for ex7
 	HAL_GPIO_WritePin(GPIOB, ROW1_Pin|ROW2_Pin|ROW3_Pin|ROW4_Pin
 			                            |ROW5_Pin|ROW6_Pin|ROW7_Pin|GPIO_PIN_7, GPIO_PIN_SET);
 
@@ -32,16 +33,20 @@ void clearAllClock(void){
 		                            |COL5_Pin, GPIO_PIN_RESET);
 }
 
-//void display_matrix5x7_number(int number){
-////	matrix5x7_buffer[0] = number;
-////	Matrix5x7_led_driver();
-//// 	later
-//}
-//
-//void Matrix5x7_led_driver(){
-//	//uint8_t temp = rowMatrix5x7Conversion[matrix5x7_buffer[0]];
-//	// later
-//}
+void Matrix5x7_led_driver(void){
+	uint8_t temp = rowMatrix5x7Conversion[matrix5x7_buffer[0]];
+	int checknum = matrix5x7_buffer[0];
+	if((checknum == 8) | (checknum == 9) | (checknum == 10))row_buffer[0] = (row_buffer[0] & temp);
+	else if((checknum == 7) | (checknum == 11))row_buffer[1] = (row_buffer[1] & temp);
+	else if((checknum == 0) | (checknum == 6))row_buffer[2] = (row_buffer[2] & temp);
+	else if((checknum == 1) | (checknum == 5))row_buffer[3] = (row_buffer[3] & temp);
+	else row_buffer[4] = (row_buffer[4] & temp);
+}
+
+void setNumberOnClock(int number){ // for ex8
+	matrix5x7_buffer[0] = number;
+	Matrix5x7_led_driver();
+}
 //////////////////////////////////////////////////////////////////////
 //void display_matrix5x7(int row, int col){
 //	HAL_GPIO_WritePin(GPIOB, ROW1_Pin|ROW2_Pin|ROW3_Pin|ROW4_Pin

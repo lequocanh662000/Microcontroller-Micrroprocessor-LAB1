@@ -35,12 +35,14 @@
 #define ROW7_Port 			GPIOB
 
 void display_matrix5x7_all();
+void clearAllClock(void);
 void display_matrix5x7_number(int number);
 void Matrix5x7_led_driver();
+void setNumberOnClock(int number);
 
-void display_matrix5x7(int row, int col);
-void display_clock12(int hour);
-void clearAllClock(void);
+//void display_matrix5x7(int row, int col);
+//void display_clock12(int hour);
+
 
 
 #endif /* INC_MAXTRIX5X7_DISPLAY_H_ */
