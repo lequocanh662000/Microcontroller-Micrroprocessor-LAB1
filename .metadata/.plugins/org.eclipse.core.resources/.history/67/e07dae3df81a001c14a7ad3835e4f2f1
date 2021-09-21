@@ -39,7 +39,6 @@ void clearAllClock(void);
 void display_matrix5x7_number(int number);
 void Matrix5x7_led_driver();
 void setNumberOnClock(int number);
-void clearNumberOnClock(int number);
 
 //void display_matrix5x7(int row, int col);
 //void display_clock12(int hour);

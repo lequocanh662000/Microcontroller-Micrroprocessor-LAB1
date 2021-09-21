@@ -39,13 +39,6 @@ int main(void)
 
 	  display_matrix5x7_all();
 	  HAL_Delay(500);
-
-	  clearNumberOnClock(0);
-
-	  clearNumberOnClock(7);
-
-	  display_matrix5x7_all();
-	  HAL_Delay(500);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

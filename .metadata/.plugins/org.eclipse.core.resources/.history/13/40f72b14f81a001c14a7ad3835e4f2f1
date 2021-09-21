@@ -11,8 +11,7 @@
 #define NUMBER_OF_MATRIX5x7 	1
 
 static int 	matrix5x7_buffer[NUMBER_OF_MATRIX5x7]; // number of matrix led buffer : quet column
-static uint8_t rowOnMatrix5x7Conversion[] = {0xfd, 0xfd, 0xfb, 0xf7, 0xef, 0xdf, 0xdf, 0xdf, 0xef, 0xf7, 0xfb, 0xfd};
-static uint8_t rowOffMatrix5x7Conversion[] = {0x02, 0x02, 0x04, 0x08, 0x10, 0x20, 0x20, 0x20, 0x10, 0x08, 0x04, 0x02};
+static uint8_t rowMatrix5x7Conversion[] = {0xfd, 0xfd, 0xfb, 0xf7, 0xef, 0xdf, 0xdf, 0xdf, 0xef, 0xf7, 0xfb, 0xfd};
 
 static uint8_t column_buffer[] = {0x01, 0x2, 0x04, 0x08, 0x10};
 static uint8_t row_buffer[]    = {0xff, 0xff, 0xff, 0xff, 0xff};
@@ -34,34 +33,19 @@ void clearAllClock(void){  // for ex7
 		                            |COL5_Pin, GPIO_PIN_RESET);
 }
 
-void Matrix5x7_led_driver(int mode){
+void Matrix5x7_led_driver(void){
+	uint8_t temp = rowMatrix5x7Conversion[matrix5x7_buffer[0]];
 	int checknum = matrix5x7_buffer[0];
-	if(mode == 1){  // mode 1 : turn on led
-		uint8_t temp = rowOnMatrix5x7Conversion[matrix5x7_buffer[0]];
-		if((checknum == 8) | (checknum == 9) | (checknum == 10))row_buffer[0] = (row_buffer[0] & temp);
-		else if((checknum == 7) | (checknum == 11))row_buffer[1] = (row_buffer[1] & temp);
-		else if((checknum == 0) | (checknum == 6))row_buffer[2] = (row_buffer[2] & temp);
-		else if((checknum == 1) | (checknum == 5))row_buffer[3] = (row_buffer[3] & temp);
-		else row_buffer[4] = (row_buffer[4] & temp);
-	}
-	else{  // mode 0 : turn off led
-		uint8_t temp = rowOffMatrix5x7Conversion[matrix5x7_buffer[0]];
-		if((checknum == 8) | (checknum == 9) | (checknum == 10))row_buffer[0] = (row_buffer[0] | temp);
-		else if((checknum == 7) | (checknum == 11))row_buffer[1] = (row_buffer[1] | temp);
-		else if((checknum == 0) | (checknum == 6))row_buffer[2] = (row_buffer[2] | temp);
-		else if((checknum == 1) | (checknum == 5))row_buffer[3] = (row_buffer[3] | temp);
-		else row_buffer[4] = (row_buffer[4] | temp);
-	}
+	if((checknum == 8) | (checknum == 9) | (checknum == 10))row_buffer[0] = (row_buffer[0] & temp);
+	else if((checknum == 7) | (checknum == 11))row_buffer[1] = (row_buffer[1] & temp);
+	else if((checknum == 0) | (checknum == 6))row_buffer[2] = (row_buffer[2] & temp);
+	else if((checknum == 1) | (checknum == 5))row_buffer[3] = (row_buffer[3] & temp);
+	else row_buffer[4] = (row_buffer[4] & temp);
 }
 
 void setNumberOnClock(int number){ // for ex8
 	matrix5x7_buffer[0] = number;
-	Matrix5x7_led_driver(1);
-}
-
-void clearNumberOnClock(int number){
-	matrix5x7_buffer[0] = number;
-	Matrix5x7_led_driver(0);
+	Matrix5x7_led_driver();
 }
 //////////////////////////////////////////////////////////////////////
 //void display_matrix5x7(int row, int col){
