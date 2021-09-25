@@ -22,12 +22,16 @@ void display_matrix5x7_all(void){   // for ex6
 	for(int i=0; i<5; i++){
 		GPIOB->ODR = row_buffer[i];
 		GPIOA->ODR = column_buffer[i];
-		HAL_Delay(50); // if it is fast enough (delay 1ms), fps > 24, people can see it like as the picture showed in requirement
+		HAL_Delay(500); // if it is fast enough (delay 1ms), fps > 24, people can see it like as the picture showed in requirement
 	}
 }
 
 void clearAllClock(void){  // for ex7
-	row_buffer[0] = row_buffer[1] = row_buffer[2] = row_buffer[3] = row_buffer[4] = 0xff;
+	HAL_GPIO_WritePin(GPIOB, ROW1_Pin|ROW2_Pin|ROW3_Pin|ROW4_Pin
+			                            |ROW5_Pin|ROW6_Pin|ROW7_Pin|GPIO_PIN_7, GPIO_PIN_RESET);
+
+	HAL_GPIO_WritePin(GPIOA, COL1_Pin|COL2_Pin|COL3_Pin|COL4_Pin
+		                            |COL5_Pin, GPIO_PIN_SET);
 }
 
 void Matrix5x7_led_driver(int mode){

@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="display_matrix5x7_number"/>
 			<item value="ADC"/>
 			<item value="0x4"/>
 			<item value="BASE"/>

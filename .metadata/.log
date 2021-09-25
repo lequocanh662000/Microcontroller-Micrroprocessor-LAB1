@@ -378,3 +378,18 @@ Caused by: java.net.ConnectException: Connection timed out: connect
 
 !ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2021-09-21 20:35:22.441
 !MESSAGE No repository found at https://download.eclipse.org/releases/2021-03.
+!SESSION 2021-09-25 20:42:45.768 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-09-25 20:43:44.654
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-09-25 20:43:44.736
+!MESSAGE Log4j initialized with config file C:\Users\Dell\STM32CubeIDE\LAB1\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-09-25 20:44:00.928
+!MESSAGE Started RMI Server, listening on port 41337

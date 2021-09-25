@@ -6,46 +6,35 @@ static void MX_GPIO_Init(void);
 
 int main(void)
 {
-
   SystemClock_Config();
-
-
   MX_GPIO_Init();
 
-  HAL_GPIO_WritePin(GPIOB, ROW1_Pin|ROW2_Pin|ROW3_Pin|ROW4_Pin
-  	          	                            |ROW5_Pin|ROW6_Pin|ROW7_Pin|GPIO_PIN_7, SET);
-
-  HAL_GPIO_WritePin(GPIOA, COL1_Pin|COL2_Pin|COL3_Pin|COL4_Pin
-  	        	                            |COL5_Pin, RESET);
+  int s_counter = 57;
+  int m_counter = 9;
+  int h_counter = 0;
+  int s_display, m_display, h_display;
   while (1)
   {
-	  HAL_GPIO_WritePin(GPIOB, ROW1_Pin|ROW2_Pin|ROW3_Pin|ROW4_Pin
-	    	          	                            |ROW5_Pin|ROW6_Pin|ROW7_Pin|GPIO_PIN_7, SET);
-
-	  HAL_GPIO_WritePin(GPIOA, COL1_Pin|COL2_Pin|COL3_Pin|COL4_Pin
-	    	        	                            |COL5_Pin, RESET);
-	  HAL_Delay(500);
+	  clearAllClock();
+	  s_display = s_counter/5;
+	  m_display = m_counter/5;
+	  h_display = h_counter%12;
+	  setNumberOnClock(h_display);
+	  setNumberOnClock(m_display);
+	  setNumberOnClock(s_display);
+	  display_matrix5x7_all();
+	  HAL_Delay(100);
     /* USER CODE END WHILE */
-
-	  setNumberOnClock(0);
-
-	  setNumberOnClock(3);
-
-	  setNumberOnClock(7);
-
-	  setNumberOnClock(9);
-
-	  setNumberOnClock(11);
-
-	  display_matrix5x7_all();
-	  HAL_Delay(500);
-
-	  clearNumberOnClock(0);
-
-	  clearNumberOnClock(7);
-
-	  display_matrix5x7_all();
-	  HAL_Delay(500);
+	  if(s_counter < 60)s_counter++;
+	  if(s_counter == 60 && m_counter < 59){
+		  m_counter++;
+		  s_counter = 0;
+	  }
+	  else if(s_counter == 60 && m_counter == 59){
+		  s_counter = 0;
+		  m_counter = 0;
+		  h_counter++;
+	  }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

@@ -36,7 +36,7 @@
 
 void display_matrix5x7_all(void); 			// ex 6
 void clearAllClock(void); 				// ex 7
-void Matrix5x7_led_driver(int mode);
+void Matrix5x7_led_driver(void);
 void setNumberOnClock(int number);   	// ex 8
 void clearNumberOnClock(int number); 	// ex 9
 void displayRealClock(void);			// ex 10

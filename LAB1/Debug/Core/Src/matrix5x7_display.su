@@ -1,5 +1,6 @@
 matrix5x7_display.c:21:6:display_matrix5x7_all	16	static
-matrix5x7_display.c:29:6:clearAllClock	8	static
-matrix5x7_display.c:37:6:Matrix5x7_led_driver	24	static
-matrix5x7_display.c:57:6:setNumberOnClock	16	static
-matrix5x7_display.c:62:6:clearNumberOnClock	16	static
+matrix5x7_display.c:29:6:clearAllClock	4	static
+matrix5x7_display.c:33:6:Matrix5x7_led_driver	24	static
+matrix5x7_display.c:53:6:setNumberOnClock	16	static
+matrix5x7_display.c:58:6:clearNumberOnClock	16	static
+matrix5x7_display.c:63:6:displayRealClock	4	static

@@ -22,7 +22,7 @@ void display_matrix5x7_all(void){   // for ex6
 	for(int i=0; i<5; i++){
 		GPIOB->ODR = row_buffer[i];
 		GPIOA->ODR = column_buffer[i];
-		HAL_Delay(50); // if it is fast enough (delay 1ms), fps > 24, people can see it like as the picture showed in requirement
+		HAL_Delay(300); // if it is fast enough (delay 1ms), fps > 24, people can see it like as the picture showed in requirement
 	}
 }
 

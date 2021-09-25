@@ -34,12 +34,12 @@
 #define ROW7_Pin 			GPIO_PIN_6
 #define ROW7_Port 			GPIOB
 
-void display_matrix5x7_all(void); 			// ex 6
-void clearAllClock(void); 				// ex 7
-void Matrix5x7_led_driver(int mode);
-void setNumberOnClock(int number);   	// ex 8
-void clearNumberOnClock(int number); 	// ex 9
-void displayRealClock(void);			// ex 10
+void display_matrix5x7_all();
+void clearAllClock(void);
+void display_matrix5x7_number(int number);
+void Matrix5x7_led_driver();
+void setNumberOnClock(int number);
+void clearNumberOnClock(int number);
 
 //void display_matrix5x7(int row, int col);
 //void display_clock12(int hour);
